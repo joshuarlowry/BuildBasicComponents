@@ -1,4 +1,4 @@
-# Building reusable inputs
+# Building basic components
 
 ## Background
 This is a project to explore building reusable inputs for React. The goal is to demonstrate how to decouple core business logic for controls from their ending view (using MUI and Tailwind).
