@@ -22,6 +22,6 @@ describe('MaterialUITab', () => {
     render(<MaterialUITab {...mockProps} />);
     
     expect(screen.getByText('Enter your website URL')).toBeInTheDocument();
-    expect(screen.getByText('Enter your phone number')).toBeInTheDocument();
+    expect(screen.getByText('Please enter a valid phone number')).toBeInTheDocument();
   });
 }); 

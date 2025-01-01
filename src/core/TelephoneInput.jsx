@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const PHONE_REGEX = /^\+?([1-9]\d{0,2})?[-. ]?\(?([0-9]{1,4})\)?[-. ]?([0-9]{1,4})[-. ]?([0-9]{1,9})$/;
 
@@ -10,10 +10,16 @@ export const TelephoneInput = ({
   onError,
   ...props
 }) => {
+  useEffect(() => {
+    if (value !== undefined) {
+      validatePhone(value);
+    }
+  }, [value]);
+
   const validatePhone = (input) => {
     if (!input) {
-      onError?.(false);
-      return true;
+      onError?.(true);
+      return false;
     }
 
     // Remove all spaces, dashes, dots, and parentheses for validation
