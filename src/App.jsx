@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 import { Tabs, Tab, Box } from '@mui/material';
-import { URLInput } from './core/URLInput';
-import { MUIURLInput } from './styles/MUI/MUIURLInput';
-import { TailwindURLInput } from './styles/Tailwind/TailwindURLInput';
-import { TelephoneInput } from './core/TelephoneInput';
-import { MUITelephoneInput } from './styles/MUI/MUITelephoneInput';
-import { TailwindTelephoneInput } from './styles/Tailwind/TailwindTelephoneInput';
-
-function TabPanel({ children, value, index }) {
-  return (
-    <div hidden={value !== index} className="mt-4">
-      {value === index && children}
-    </div>
-  );
-}
+import { TabPanel } from './components/common/TabPanel';
+import { CoreComponentsTab } from './components/tabs/CoreComponentsTab';
+import { MaterialUITab } from './components/tabs/MaterialUITab';
+import { TailwindTab } from './components/tabs/TailwindTab';
 
 function App() {
   const [tab, setTab] = useState(0);
@@ -37,81 +27,34 @@ function App() {
       </Box>
 
       <TabPanel value={tab} index={0}>
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-xl font-bold mb-4">Core URL Input</h2>
-            <URLInput
-              value={coreUrl}
-              onChange={setCoreUrl}
-              onError={setCoreUrlError}
-              placeholder="Enter URL"
-              className="w-full px-3 py-2 border rounded-md"
-            />
-            {coreUrlError && (
-              <p className="text-sm text-red-500">Please enter a valid URL</p>
-            )}
-          </div>
-
-          <div>
-            <h2 className="text-xl font-bold mb-4">Core Telephone Input</h2>
-            <TelephoneInput
-              value={coreTel}
-              onChange={setCoreTel}
-              onError={setCoreTelError}
-              placeholder="+1 (555) 555-5555"
-              className="w-full px-3 py-2 border rounded-md"
-            />
-            {coreTelError && (
-              <p className="text-sm text-red-500">Please enter a valid phone number</p>
-            )}
-          </div>
-        </div>
+        <CoreComponentsTab
+          coreUrl={coreUrl}
+          setCoreUrl={setCoreUrl}
+          coreTel={coreTel}
+          setCoreTel={setCoreTel}
+          coreUrlError={coreUrlError}
+          setCoreUrlError={setCoreUrlError}
+          coreTelError={coreTelError}
+          setCoreTelError={setCoreTelError}
+        />
       </TabPanel>
 
       <TabPanel value={tab} index={1}>
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-xl font-bold mb-4">Material-UI URL Input</h2>
-            <MUIURLInput
-              label="Website URL"
-              value={muiUrl}
-              onChange={setMuiUrl}
-              helperText="Enter your website URL"
-            />
-          </div>
-
-          <div>
-            <h2 className="text-xl font-bold mb-4">Material-UI Telephone Input</h2>
-            <MUITelephoneInput
-              label="Phone Number"
-              value={muiTel}
-              onChange={setMuiTel}
-              helperText="Enter your phone number"
-            />
-          </div>
-        </div>
+        <MaterialUITab
+          muiUrl={muiUrl}
+          setMuiUrl={setMuiUrl}
+          muiTel={muiTel}
+          setMuiTel={setMuiTel}
+        />
       </TabPanel>
 
       <TabPanel value={tab} index={2}>
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-xl font-bold mb-4">Tailwind URL Input</h2>
-            <TailwindURLInput
-              label="Website URL"
-              value={tailwindUrl}
-              onChange={setTailwindUrl}
-            />
-          </div>
-
-          <div>
-            <h2 className="text-xl font-bold mb-4">Tailwind Telephone Input</h2>
-            <TailwindTelephoneInput
-              label="Phone Number"
-              value={tailwindTel}
-              onChange={setTailwindTel}
-            />
-          </div>
-        </div>
+        <TailwindTab
+          tailwindUrl={tailwindUrl}
+          setTailwindUrl={setTailwindUrl}
+          tailwindTel={tailwindTel}
+          setTailwindTel={setTailwindTel}
+        />
       </TabPanel>
     </div>
   );

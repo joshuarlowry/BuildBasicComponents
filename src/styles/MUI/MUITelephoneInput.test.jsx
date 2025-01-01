@@ -1,4 +1,6 @@
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { describe, test, expect } from 'vitest';
 import { MUITelephoneInput } from './MUITelephoneInput';
 
 describe('MUITelephoneInput', () => {

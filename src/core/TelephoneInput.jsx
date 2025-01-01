@@ -1,7 +1,5 @@
 import React from 'react';
 
-// Regex for international phone numbers (E.164 format)
-// Allows optional + prefix, country code, and local number
 const PHONE_REGEX = /^\+?([1-9]\d{0,2})?[-. ]?\(?([0-9]{1,4})\)?[-. ]?([0-9]{1,4})[-. ]?([0-9]{1,9})$/;
 
 export const TelephoneInput = ({
@@ -19,7 +17,7 @@ export const TelephoneInput = ({
     }
 
     // Remove all spaces, dashes, dots, and parentheses for validation
-    const cleanNumber = input.replace(/[\s\-.()\[\]]/g, '');
+    const cleanNumber = input.replace(/[\s\-.()[\]]/g, '');
     
     // Require at least 7 digits (minimum length for most phone numbers)
     if (cleanNumber.length < 7) {
