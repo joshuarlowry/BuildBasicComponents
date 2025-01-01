@@ -1,4 +1,4 @@
-.PHONY: install start build clean
+.PHONY: install start build clean lint lint-fix
 
 install:
 	npm install
@@ -12,3 +12,9 @@ build:
 clean:
 	rm -rf node_modules
 	rm -rf dist 
+
+lint:
+	npm run lint
+
+lint-fix:
+	npm run lint:fix 
